@@ -11,10 +11,10 @@ public class HomeHerosProfilesPage extends DefaultPage {
 		super(driver);
 	}
 
-	@FindBy(how=How.XPATH, using="//*[@id=\"login_link\"]")
+	@FindBy(how=How.ID, using="login_link")
 	private WebElement loginLink;
 
-	@FindBy(id = "signup_link")
+	@FindBy(how = How.ID , using = "signup_link")
 	private WebElement signupLink;
 
 	public void GoToLoginPage() {

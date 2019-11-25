@@ -8,6 +8,6 @@ Feature: LogIn
 
     Examples: 
       | username | password | message                                                                |
-      | "dev"    | "wizard" | "Logged in as A[l Skept-Cal Tester (as.tester@wearewaes.com)! log out" |
-      | "admin"  | "hero"   | "Logged in as Zuper Dooper Dev (zd.dev@wearewaes.com)! log out"        |
+      | "dev"    | "wizard" | "Logged in as Zuper Dooper Dev (zd.dev@wearewaes.com)! log out" |
+      | "admin"  | "hero"   | "Logged in as Amazing Admin (a.admin@wearewaes.com)! log out"        |
       | "tester" | "maniac" | "Logged in as Al Skept-Cal Tester (as.tester@wearewaes.com)! log out"  |

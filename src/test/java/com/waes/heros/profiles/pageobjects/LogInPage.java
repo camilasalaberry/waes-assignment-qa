@@ -16,13 +16,13 @@ public class LogInPage extends DefaultPage {
 	@FindBy(how = How.NAME, using= "username") 
 	public WebElement userName;
 
-	@FindBy(id = "password_input")
+	@FindBy(how = How.ID , using = "password_input")
 	public WebElement passWord;
 
-	@FindBy(id = "login_button")
+	@FindBy(how = How.ID , using ="login_button")
 	public WebElement loginButton;
 	
-	@FindBy(id="status")
+	@FindBy(how = How.ID , using ="status")
 	public WebElement statusLogin;
 
 	public void fillUsernameAndPassword(String name, String pass) {		
