@@ -24,7 +24,29 @@ Scenario Outline: Fields username and password are mandatory
   When the user attempts to login
   Then the message "To get the full hero experience, you’ll need to log in." must be visible
   Examples:
-  |username |password  |
-  | ""     |  "wizard"|
+  |username |password |
+  |""       | "wizard"|
   |"admin"  |       ""|
-  |""      |       ""|
+  |""       |       ""|
+
+Scenario Outline: Once logged in Profile page must provide user information
+  Given the user is logged in as <username>, <password>
+  When the user attempts to profile page
+  Then profile information must be present <question> and , <superpower>
+  Examples:
+  |username  | password | question                                   | superpower                           |
+  | "dev"    | "wizard" | "How are you doing, Zuper Dooper Dev?"     | "Debug a repellent factory storage." |
+  | "admin"  | "hero"   | "How are you doing, Amazing Admin?"        |"Change the course of a waterfall."   |
+  | "tester" | "maniac" |  "How are you doing, Al Skept-Cal Tester?" |"Voltage AND Current."                |
+
+  Scenario Outline: Once logged in Details page must provide user information
+  Given the user is logged in as <username>, <password>
+  When the user attempts to details page
+  Then details of personal profile must be present <name>, <email_address>
+  Examples:
+  |username| password   | name                  | email_address             |
+  | "dev"    | "wizard" | "Zuper Dooper Dev"    | " zd.dev@wearewaes.com"   |
+  | "admin"  | "hero"   | "Amazing Admin"       | "a.admin@wearewaes.com"   |
+  | "tester" | "maniac" | "Al Skept-Cal Tester" | "as.tester@wearewaes.com" |
+
+  

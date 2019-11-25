@@ -2,8 +2,10 @@ package com.waes.heros.profiles.steps;
 
 import org.openqa.selenium.WebDriver;
 
+import com.waes.heros.profiles.pageobjects.DetailsPage;
 import com.waes.heros.profiles.pageobjects.HomeHerosProfilesPage;
 import com.waes.heros.profiles.pageobjects.LogInPage;
+import com.waes.heros.profiles.pageobjects.ProfilePage;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -14,6 +16,8 @@ public class LoginSteps {
 
 	LogInPage loginPage;
 	HomeHerosProfilesPage herosProfilesPage;
+	ProfilePage profilePage;
+	DetailsPage detailsPage;
 	public WebDriver driver = Hooks.driver;
 
 	@Given("the username {string} was registered with password {string}")
@@ -62,6 +66,38 @@ public class LoginSteps {
 		assertEquals(message, loginPage.statusLogin.getText());
 	}
 
+	@Given("the user is logged in as {string}, {string}")
+	public void the_user_is_logged_in_as(String username, String password) {
+		loadHerosProfilesHome();
+		goToLoginPage();
+		loginSubmit(username, password);
+	}
+
+	@When("the user attempts to profile page")
+	public void the_user_attempts_to_profile_page() {
+		
+		profilePage = new ProfilePage(driver);
+
+	}
+
+@Then("profile information must be present {string} and , {string}")
+public void profile_information_must_be_present_and(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new cucumber.api.PendingException();
+}
+
+@When("the user attempts to details page")
+public void the_user_attempts_to_details_page() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new cucumber.api.PendingException();
+}
+
+@Then("details of personal profile must be present {string}, {string}")
+public void details_of_personal_profile_must_be_present(String string, String string2) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new cucumber.api.PendingException();
+}
+
 	public void loadHerosProfilesHome() {
 		herosProfilesPage = new HomeHerosProfilesPage(driver);
 	}
@@ -69,5 +105,10 @@ public class LoginSteps {
 	public void goToLoginPage(){
 		herosProfilesPage.GoToLoginPage();
 	    loginPage = new LogInPage(driver);
+	}
+
+	public void loginSubmit(String user, String pass){
+		loginPage.fillUsernameAndPassword(user, pass);
+		loginPage.doLogin();
 	}
 }
