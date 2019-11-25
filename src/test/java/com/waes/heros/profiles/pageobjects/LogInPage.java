@@ -28,12 +28,16 @@ public class LogInPage extends DefaultPage {
 	public void fillUsernameAndPassword(String name, String pass) {		
 		userName.sendKeys(name);
 		passWord.sendKeys(pass);
-
 	}
 
-	public void submit() {
+	public void doLogin() {
 		loginButton.click();
-
 	}
 
+	public void fillUsername(String name) {
+		userName.sendKeys(name);
+	}
+	public void fillPassword(String pass) {
+		passWord.sendKeys(pass);
+	}
 }

@@ -4,7 +4,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
-
+import java.util.concurrent.TimeUnit;
 import com.waes.heros.profiles.support.ConfigureDriver;
 
 import cucumber.api.Scenario;
@@ -20,7 +20,8 @@ public class Hooks {
 	public void BeforeScenario() {
 
 		config = new ConfigureDriver();
-		driver = config.GetDriver();
+		driver = config.getDriver();
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		driver.get("https://waesworks.bitbucket.io/");
 
 	}
