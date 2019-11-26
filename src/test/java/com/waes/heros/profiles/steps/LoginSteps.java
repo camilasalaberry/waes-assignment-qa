@@ -75,27 +75,26 @@ public class LoginSteps {
 
 	@When("the user attempts to profile page")
 	public void the_user_attempts_to_profile_page() {
-		
 		profilePage = new ProfilePage(driver);
-
 	}
 
 @Then("profile information must be present {string} and , {string}")
-public void profile_information_must_be_present_and(String string, String string2) {
-    // Write code here that turns the phrase above into concrete actions
-    throw new cucumber.api.PendingException();
+public void profile_information_must_be_present_and(String question, String superPower) {
+	assertTrue(profilePage.question.getText().contains(question));
+	assertTrue(profilePage.superPower.getText().contains(superPower));
 }
 
 @When("the user attempts to details page")
 public void the_user_attempts_to_details_page() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new cucumber.api.PendingException();
+	profilePage = new ProfilePage(driver);
+	profilePage.detailsLink.click();
+	detailsPage = new DetailsPage(driver);
 }
 
 @Then("details of personal profile must be present {string}, {string}")
-public void details_of_personal_profile_must_be_present(String string, String string2) {
-    // Write code here that turns the phrase above into concrete actions
-    throw new cucumber.api.PendingException();
+public void details_of_personal_profile_must_be_present(String name, String email) {
+	assertTrue(detailsPage.name.getText().contains(name));
+	assertTrue(detailsPage.emailAddress.getText().contains(email));
 }
 
 	public void loadHerosProfilesHome() {

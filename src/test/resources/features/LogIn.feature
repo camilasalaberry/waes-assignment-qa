@@ -45,7 +45,7 @@ Scenario Outline: Once logged in Profile page must provide user information
   Then details of personal profile must be present <name>, <email_address>
   Examples:
   |username| password   | name                  | email_address             |
-  | "dev"    | "wizard" | "Zuper Dooper Dev"    | " zd.dev@wearewaes.com"   |
+  | "dev"    | "wizard" | "Zuper Dooper Dev"    | "zd.dev@wearewaes.com"   |
   | "admin"  | "hero"   | "Amazing Admin"       | "a.admin@wearewaes.com"   |
   | "tester" | "maniac" | "Al Skept-Cal Tester" | "as.tester@wearewaes.com" |
 

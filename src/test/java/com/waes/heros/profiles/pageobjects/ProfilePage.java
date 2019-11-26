@@ -12,13 +12,13 @@ public class ProfilePage extends DefaultPage {
 	}
 
 	@FindBy(how = How.XPATH , using= "//*[@id='___gatsby']/div/div/main/div[2]/section/p[1]")
-	WebElement question; 
+	public WebElement question; 
 
 	@FindBy(how = How.XPATH , using= "//*[@id='___gatsby']/div/div/main/div[2]/section/p[2]")
-	WebElement superPower; 
+	public WebElement superPower; 
 
 	@FindBy(how = How.ID , using= "details_link")
-	WebElement detailsLink;	
+	public WebElement detailsLink;	
 
 	public void goToDetailsPage(){
 		detailsLink.click();

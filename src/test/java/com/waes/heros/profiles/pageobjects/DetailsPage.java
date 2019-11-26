@@ -12,16 +12,16 @@ public class DetailsPage extends DefaultPage{
 	}
 
 	@FindBy(how = How.XPATH , using= "//*[@id='___gatsby']/div/div/main/div[2]/section/ul/li[1]")
-	WebElement name; 
+	public WebElement name; 
 
 	@FindBy(how = How.XPATH , using= "//*[@id='___gatsby']/div/div/main/div[2]/section/ul/li[2]")
-	WebElement emailAddress; 
+	public  WebElement emailAddress; 
 
 	@FindBy(how = How.ID , using= "profile_link")
-	WebElement profileLink;	
+	public WebElement profileLink;	
 
 	@FindBy(how = How.XPATH , using= "//*[@id='status']/p/a")
-	WebElement logOutLink;	
+	public WebElement logOutLink;	
 
 
 	public void goToDetailsPage(){
