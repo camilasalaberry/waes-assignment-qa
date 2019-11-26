@@ -1,10 +1,10 @@
 package com.waes.heros.profiles.pageobjects;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.ui.ISelect;
 
 public class SignUpPage extends DefaultPage {
 
@@ -27,16 +27,22 @@ public class SignUpPage extends DefaultPage {
 	public WebElement emailInput;
 
 	@FindBy(how = How.ID, using = "day_select")
-	public ISelect dateOfBirthDaySelect;
+	public WebElement dateOfBirthDaySelect;
 
 	@FindBy(how = How.ID, using = "month_select")
-	public ISelect dateOfBirthMonthSelect;
+	public WebElement dateOfBirthMonthSelect;
 
 	@FindBy(how = How.ID, using = "year_select")
-	public ISelect dateOfBirthYearSelect;
+	public WebElement dateOfBirthYearSelect;
 
 	@FindBy(how = How.ID, using = "submit_button")
 	public WebElement submitButton;
+
+	@FindBy(how = How.XPATH, using = "//*[@id='___gatsby']/div/div/main")
+	public WebElement bodyDocument;
+
+	@FindBy(how = How.XPATH, using = "//*[@id='status']/p")
+	public WebElement status;
 
 	public void fillAllForm(String userName, String passWord, String email, String name, String dayDateOfBirthDay,
 			String monthDateOfBirthDay, String yearDateOfBirthDay) {
@@ -44,9 +50,9 @@ public class SignUpPage extends DefaultPage {
 		passWordInput.sendKeys(passWord);
 		emailInput.sendKeys(email);
 		nameInput.sendKeys(name);
-		dateOfBirthDaySelect.selectByValue(dayDateOfBirthDay);
-		dateOfBirthMonthSelect.selectByValue(monthDateOfBirthDay);
-		dateOfBirthYearSelect.selectByValue(yearDateOfBirthDay);
+		dateOfBirthDaySelect.sendKeys(dayDateOfBirthDay);
+		dateOfBirthMonthSelect.sendKeys(monthDateOfBirthDay);
+		dateOfBirthYearSelect.sendKeys(yearDateOfBirthDay);
 
 	}
 
@@ -67,18 +73,21 @@ public class SignUpPage extends DefaultPage {
 	}
 
 	public void selectDayOfBirth(String dayDateOfBirthDay) {
-		dateOfBirthDaySelect.selectByValue(dayDateOfBirthDay);
+		dateOfBirthDaySelect.sendKeys(dayDateOfBirthDay);
 	}
 
 	public void selectMonthOfBirth(String monthDateOfBirthDay) {
-		dateOfBirthMonthSelect.selectByValue(monthDateOfBirthDay);
+		dateOfBirthMonthSelect.sendKeys(monthDateOfBirthDay);
 	}
 
 	public void selectYearOfBirth(String yearDateOfBirthDay) {
-		dateOfBirthYearSelect.selectByValue(yearDateOfBirthDay);
+		dateOfBirthYearSelect.sendKeys(yearDateOfBirthDay);
+		bodyDocument.click();
 	}
 
 	public void submit() {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0,250)", "");
 		submitButton.click();
 	}
 }

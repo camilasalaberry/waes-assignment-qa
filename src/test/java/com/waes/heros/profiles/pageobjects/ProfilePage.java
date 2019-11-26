@@ -11,17 +11,16 @@ public class ProfilePage extends DefaultPage {
 		super(driver);
 	}
 
-	@FindBy(how = How.XPATH , using= "//*[@id='___gatsby']/div/div/main/div[2]/section/p[1]")
-	public WebElement question; 
+	@FindBy(how = How.XPATH, using = "//*[@id='___gatsby']/div/div/main/div[2]/section/p[1]")
+	public WebElement question;
 
-	@FindBy(how = How.XPATH , using= "//*[@id='___gatsby']/div/div/main/div[2]/section/p[2]")
-	public WebElement superPower; 
+	@FindBy(how = How.XPATH, using = "//*[@id='___gatsby']/div/div/main/div[2]/section/p[2]")
+	public WebElement superPower;
 
-	@FindBy(how = How.ID , using= "details_link")
-	public WebElement detailsLink;	
+	@FindBy(how = How.ID, using = "details_link")
+	public WebElement detailsLink;
 
-	public void goToDetailsPage(){
+	public void goToDetailsPage() {
 		detailsLink.click();
 	}
 }
-

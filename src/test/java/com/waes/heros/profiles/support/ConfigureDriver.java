@@ -7,11 +7,11 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class ConfigureDriver {
-	
-	public ConfigureDriver () {
-		
+
+	public ConfigureDriver() {
+
 	}
-	
+
 	public WebDriver getDriver() {
 		WebDriver driver;
 		String browser = Optional.ofNullable(System.getProperty("browser")).orElse("");
@@ -25,14 +25,15 @@ public class ConfigureDriver {
 		return driver;
 	}
 
-	public WebDriver setUpDriver(boolean headless){
-		
+	public WebDriver setUpDriver(boolean headless) {
+
 		System.setProperty("webdriver.gecko.driver", "src\\test\\resources\\drivers\\firefox\\geckodriver.exe");
 		FirefoxOptions options = new FirefoxOptions();
-		options.addArguments("start-maximized");
-
+		options.addArguments("--lang=us");
 		if (headless) {
 			options.setHeadless(true);
+		} else {
+			options.addArguments("start-maximized");
 		}
 		return new FirefoxDriver(options);
 	}

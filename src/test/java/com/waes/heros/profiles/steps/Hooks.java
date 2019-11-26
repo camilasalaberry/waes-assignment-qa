@@ -15,14 +15,15 @@ public class Hooks {
 
 	static WebDriver driver;
 	ConfigureDriver config;
+	public static final String HEROS_PROFILE_URL = "https://waesworks.bitbucket.io/";
 
 	@Before
 	public void BeforeScenario() {
 
 		config = new ConfigureDriver();
 		driver = config.getDriver();
-		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-		driver.get("https://waesworks.bitbucket.io/");
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.get(HEROS_PROFILE_URL);
 
 	}
 

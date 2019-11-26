@@ -32,7 +32,7 @@ public class SignUpSteps {
 	public void user_attempts_to_register() {
 		signUpPage.submit();
 		newUserPage = new NewUserPage(driver);
-		
+
 	}
 
 	@Given("the entered email is {string}")
@@ -77,24 +77,69 @@ public class SignUpSteps {
 
 	@Given("user fill the form to become a hero")
 	public void user_fill_the_form_to_become_a_hero() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new cucumber.api.PendingException();
+		signUpPage.fillUsername("analyst");
+		signUpPage.fillPassWord("docs");
+		signUpPage.fillName("Camila");
+		signUpPage.selectDayOfBirth("19");
+		signUpPage.selectMonthOfBirth("May");
+		signUpPage.selectYearOfBirth("1990");
 	}
 
 	@Then("he should see a message {string}")
 	public void he_should_see_a_message(String message) {
+		assertEquals(message, signUpPage.status.getText());
+	}
+
+	@Then("he should see a welcome message in his profile {string}")
+	public void he_should_see_a_welcome_message_in_his_profile(String message) {
 		assertEquals(message, newUserPage.welcomeMessage.getText());
 	}
-	
+
 	@Then("a validation should be presented {string}")
-	public void a_validation_should_be_presented(String string) {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new cucumber.api.PendingException();
+	public void a_validation_should_be_presented(String message) {
+		assertEquals(message, signUpPage.emailInput.getAttribute("validationMessage"));
+		String validationMessage = signUpPage.emailInput.getAttribute("validationMessage");
+		System.out.println(validationMessage);
 	}
-	
+
+	@Then("a validation should be presented to mandatory fields {string}, {string}")
+	public void a_validation_should_be_presented_to_mandatory_fields(String field, String message) {
+		if (field.equals("userName")) {
+			assertEquals(message, signUpPage.userNameInput.getAttribute("validationMessage"));
+		} else if (field.equals("passWord")) {
+			assertEquals(message, signUpPage.passWordInput.getAttribute("validationMessage"));
+		} else if (field.equals("name")) {
+			assertEquals(message, signUpPage.nameInput.getAttribute("validationMessage"));
+		} else if (field.equals("email")) {
+			assertEquals(message, signUpPage.emailInput.getAttribute("validationMessage"));
+		} else if (field.equals("dayDateOfBirth")) {
+			assertEquals(message, signUpPage.dateOfBirthDaySelect.getAttribute("validationMessage"));
+		} else if (field.equals("monthDateOfBirth")) {
+			assertEquals(message, signUpPage.dateOfBirthMonthSelect.getAttribute("validationMessage"));
+		} else if (field.equals("yearDateOfBirth")) {
+			assertEquals(message, signUpPage.dateOfBirthYearSelect.getAttribute("validationMessage"));
+		}
+
+	}
+
 	@Then("he should see the status {string}")
 	public void he_should_see_the_status(String status) {
 		assertEquals(status, newUserPage.status.getText());
+	}
+
+	@Then("should be possible access profile data like superpower {string}")
+	public void should_be_possible_access_profile_data_like_superpower(String superpower) {
+		newUserPage.goToProfilePage();
+		profilePage = new ProfilePage(driver);
+		assertTrue(profilePage.superPower.getText().contains(superpower));
+	}
+
+	@Then("details like name {string}, email {string}")
+	public void details_like_name_email(String name, String email) {
+		newUserPage.goToDetailsPage();
+		detailsPage = new DetailsPage(driver);
+		assertTrue(detailsPage.name.getText().contains(name));
+		assertTrue(detailsPage.emailAddress.getText().contains(email));
 	}
 
 }

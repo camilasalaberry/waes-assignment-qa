@@ -21,10 +21,11 @@ public class LoginSteps {
 	public WebDriver driver = Hooks.driver;
 
 	@Given("the username {string} was registered with password {string}")
-	public void the_username_was_registered_with_password(String userName, String passWord) throws InterruptedException {
+	public void the_username_was_registered_with_password(String userName, String passWord)
+			throws InterruptedException {
 		this.loadHerosProfilesHome();
 		this.goToLoginPage();
-	    loginPage.fillUsernameAndPassword(userName, passWord);
+		loginPage.fillUsernameAndPassword(userName, passWord);
 	}
 
 	@When("the user attempts to login")
@@ -41,7 +42,7 @@ public class LoginSteps {
 	public void the_username_was_not_registered_with_password(String userName, String passWord) {
 		this.loadHerosProfilesHome();
 		this.goToLoginPage();
-	    loginPage.fillUsernameAndPassword(userName, passWord);
+		loginPage.fillUsernameAndPassword(userName, passWord);
 	}
 
 	@Then("he should see a not allowed message {string}")
@@ -53,12 +54,12 @@ public class LoginSteps {
 	public void the_username(String userName) {
 		this.loadHerosProfilesHome();
 		this.goToLoginPage();
-    	loginPage.fillUsername(userName);
+		loginPage.fillUsername(userName);
 	}
 
 	@Given("the password {string}")
 	public void the_password(String passWord) {
-    	loginPage.fillPassword(passWord);
+		loginPage.fillPassword(passWord);
 	}
 
 	@Then("the message {string} must be visible")
@@ -70,8 +71,7 @@ public class LoginSteps {
 	public void the_user_is_logged_in_as(String userName, String passWord) {
 		loadHerosProfilesHome();
 		goToLoginPage();
-		//loginPage.fillLoginAndSubmit(userName, passWord);
-		loginSubmit(userName, passWord);
+		loginAndSubmit(userName, passWord);
 	}
 
 	@When("the user click to profile page")
@@ -79,35 +79,35 @@ public class LoginSteps {
 		profilePage = new ProfilePage(driver);
 	}
 
-@Then("profile information must be present {string} and , {string}")
-public void profile_information_must_be_present_and(String question, String superPower) {
-	assertTrue(profilePage.question.getText().contains(question));
-	assertTrue(profilePage.superPower.getText().contains(superPower));
-}
+	@Then("profile information must be present {string} and , {string}")
+	public void profile_information_must_be_present_and(String question, String superPower) {
+		assertTrue(profilePage.question.getText().contains(question));
+		assertTrue(profilePage.superPower.getText().contains(superPower));
+	}
 
-@When("the user click to details page")
-public void the_user_click_to_details_page() {
-	profilePage = new ProfilePage(driver);
-	profilePage.detailsLink.click();
-	detailsPage = new DetailsPage(driver);
-}
+	@When("the user click to details page")
+	public void the_user_click_to_details_page() {
+		profilePage = new ProfilePage(driver);
+		profilePage.detailsLink.click();
+		detailsPage = new DetailsPage(driver);
+	}
 
-@Then("details of personal profile must be present {string}, {string}")
-public void details_of_personal_profile_must_be_present(String name, String email) {
-	assertTrue(detailsPage.name.getText().contains(name));
-	assertTrue(detailsPage.emailAddress.getText().contains(email));
-}
+	@Then("details of personal profile must be present {string}, {string}")
+	public void details_of_personal_profile_must_be_present(String name, String email) {
+		assertTrue(detailsPage.name.getText().contains(name));
+		assertTrue(detailsPage.emailAddress.getText().contains(email));
+	}
 
 	public void loadHerosProfilesHome() {
 		herosProfilesPage = new HomeHerosProfilesPage(driver);
 	}
 
-	public void goToLoginPage(){
+	public void goToLoginPage() {
 		herosProfilesPage.GoToLoginPage();
-	    loginPage = new LogInPage(driver);
+		loginPage = new LogInPage(driver);
 	}
 
-	public void loginSubmit(String userName, String passWord){
+	public void loginAndSubmit(String userName, String passWord) {
 		loginPage.fillUsernameAndPassword(userName, passWord);
 		loginPage.doLogin();
 	}
