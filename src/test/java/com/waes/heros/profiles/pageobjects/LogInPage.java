@@ -13,11 +13,11 @@ public class LogInPage extends DefaultPage {
 
 	// fields of login page mapped by id
 
-	@FindBy(how = How.NAME, using= "username") 
-	public WebElement userName;
+	@FindBy(how = How.ID, using= "username_input") 
+	public WebElement userNameInput;
 
 	@FindBy(how = How.ID , using = "password_input")
-	public WebElement passWord;
+	public WebElement passWordInput;
 
 	@FindBy(how = How.ID , using ="login_button")
 	public WebElement loginButton;
@@ -25,9 +25,9 @@ public class LogInPage extends DefaultPage {
 	@FindBy(how = How.ID , using ="status")
 	public WebElement statusLogin;
 
-	public void fillUsernameAndPassword(String name, String pass) {		
-		userName.sendKeys(name);
-		passWord.sendKeys(pass);
+	public void fillUsernameAndPassword(String userName, String password) {		
+		userNameInput.sendKeys(userName);
+		passWordInput.sendKeys(password);
 	}
 
 	public void doLogin() {
@@ -35,9 +35,14 @@ public class LogInPage extends DefaultPage {
 	}
 
 	public void fillUsername(String name) {
-		userName.sendKeys(name);
+		userNameInput.sendKeys(name);
 	}
-	public void fillPassword(String pass) {
-		passWord.sendKeys(pass);
+	public void fillPassword(String password) {
+		passWordInput.sendKeys(password);
+	}
+
+	public void fillLoginAndSubmit(String userName, String password){
+		fillUsernameAndPassword(userName, password);
+		doLogin();
 	}
 }

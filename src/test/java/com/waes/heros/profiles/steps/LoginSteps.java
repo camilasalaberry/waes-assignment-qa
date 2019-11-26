@@ -21,10 +21,10 @@ public class LoginSteps {
 	public WebDriver driver = Hooks.driver;
 
 	@Given("the username {string} was registered with password {string}")
-	public void the_username_was_registered_with_password(String username, String password) throws InterruptedException {
+	public void the_username_was_registered_with_password(String userName, String passWord) throws InterruptedException {
 		this.loadHerosProfilesHome();
 		this.goToLoginPage();
-	    loginPage.fillUsernameAndPassword(username, password);
+	    loginPage.fillUsernameAndPassword(userName, passWord);
 	}
 
 	@When("the user attempts to login")
@@ -38,10 +38,10 @@ public class LoginSteps {
 	}
 
 	@Given("the username {string} was not registered with password {string}")
-	public void the_username_was_not_registered_with_password(String username, String password) {
+	public void the_username_was_not_registered_with_password(String userName, String passWord) {
 		this.loadHerosProfilesHome();
 		this.goToLoginPage();
-	    loginPage.fillUsernameAndPassword(username, password);
+	    loginPage.fillUsernameAndPassword(userName, passWord);
 	}
 
 	@Then("he should see a not allowed message {string}")
@@ -50,15 +50,15 @@ public class LoginSteps {
 	}
 
 	@Given("the username {string}")
-	public void the_username(String username) {
+	public void the_username(String userName) {
 		this.loadHerosProfilesHome();
 		this.goToLoginPage();
-    	loginPage.fillUsername(username);
+    	loginPage.fillUsername(userName);
 	}
 
 	@Given("the password {string}")
-	public void the_password(String password) {
-    	loginPage.fillPassword(password);
+	public void the_password(String passWord) {
+    	loginPage.fillPassword(passWord);
 	}
 
 	@Then("the message {string} must be visible")
@@ -67,14 +67,15 @@ public class LoginSteps {
 	}
 
 	@Given("the user is logged in as {string}, {string}")
-	public void the_user_is_logged_in_as(String username, String password) {
+	public void the_user_is_logged_in_as(String userName, String passWord) {
 		loadHerosProfilesHome();
 		goToLoginPage();
-		loginSubmit(username, password);
+		//loginPage.fillLoginAndSubmit(userName, passWord);
+		loginSubmit(userName, passWord);
 	}
 
-	@When("the user attempts to profile page")
-	public void the_user_attempts_to_profile_page() {
+	@When("the user click to profile page")
+	public void the_user_click_to_profile_page() {
 		profilePage = new ProfilePage(driver);
 	}
 
@@ -84,8 +85,8 @@ public void profile_information_must_be_present_and(String question, String supe
 	assertTrue(profilePage.superPower.getText().contains(superPower));
 }
 
-@When("the user attempts to details page")
-public void the_user_attempts_to_details_page() {
+@When("the user click to details page")
+public void the_user_click_to_details_page() {
 	profilePage = new ProfilePage(driver);
 	profilePage.detailsLink.click();
 	detailsPage = new DetailsPage(driver);
@@ -106,8 +107,8 @@ public void details_of_personal_profile_must_be_present(String name, String emai
 	    loginPage = new LogInPage(driver);
 	}
 
-	public void loginSubmit(String user, String pass){
-		loginPage.fillUsernameAndPassword(user, pass);
+	public void loginSubmit(String userName, String passWord){
+		loginPage.fillUsernameAndPassword(userName, passWord);
 		loginPage.doLogin();
 	}
 }

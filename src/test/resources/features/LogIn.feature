@@ -31,7 +31,7 @@ Scenario Outline: Fields username and password are mandatory
 
 Scenario Outline: Once logged in Profile page must provide user information
   Given the user is logged in as <username>, <password>
-  When the user attempts to profile page
+  When the user click to profile page
   Then profile information must be present <question> and , <superpower>
   Examples:
   |username  | password | question                                   | superpower                           |
@@ -41,7 +41,7 @@ Scenario Outline: Once logged in Profile page must provide user information
 
   Scenario Outline: Once logged in Details page must provide user information
   Given the user is logged in as <username>, <password>
-  When the user attempts to details page
+  When the user click to details page
   Then details of personal profile must be present <name>, <email_address>
   Examples:
   |username| password   | name                  | email_address             |
