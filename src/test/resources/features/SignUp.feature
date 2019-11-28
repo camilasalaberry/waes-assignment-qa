@@ -63,11 +63,11 @@ Feature: SignUp
     Then a validation should be presented to mandatory fields <field>, <message>
 
     Examples: 
-      | field              | username  | password | name     | email                        | day_date_of_birth | month_date_of_birth | year_date_of_birth | message                       |
-      | "userName"         | ""        | "DOCS"   | "Camila" | "salaberry.camila@gmail.com" | "19"              | "May"               | "1990"             | "Preencha este campo."        |
-      | "passWord"         | "ANALYST" | ""       | "Camila" | "salaberry.camila@gmail.com" | "19"              | "May"               | "1990"             | "Preencha este campo."        |
-      | "name"             | "ANALYST" | "DOCS"   | ""       | "salaberry.camila@gmail.com" | "19"              | "May"               | "1990"             | "Preencha este campo."        |
-      | "email"            | "ANALYST" | "DOCS"   | "Camila" | ""                           | "19"              | "May"               | "1990"             | "Preencha este campo."        |
-      | "dayDateOfBirth"   | "ANALYST" | "DOCS"   | "Camila" | "salaberry.camila@gmail.com" | ""                | "May"               | "1990"             | "Selecione um item da lista." |
-      | "monthDateOfBirth" | "ANALYST" | "DOCS"   | "Camila" | "salaberry.camila@gmail.com" | "19"              | ""                  | "1990"             | "Selecione um item da lista." |
-      | "yearDateOfBirth"  | "ANALYST" | "DOCS"   | "Camila" | "salaberry.camila@gmail.com" | "19"              | "May"               | ""                 | "Selecione um item da lista." |
+      | field              | username  | password | name     | email                        | day_date_of_birth | month_date_of_birth | year_date_of_birth | message                         |
+      | "userName"         | ""        | "DOCS"   | "Camila" | "salaberry.camila@gmail.com" | "19"              | "May"               | "1990"             | "Fill out this field."          |
+      | "passWord"         | "ANALYST" | ""       | "Camila" | "salaberry.camila@gmail.com" | "19"              | "May"               | "1990"             | "Fill out this field."          |
+      | "name"             | "ANALYST" | "DOCS"   | ""       | "salaberry.camila@gmail.com" | "19"              | "May"               | "1990"             | "Fill out this field."          |
+      | "email"            | "ANALYST" | "DOCS"   | "Camila" | ""                           | "19"              | "May"               | "1990"             | "Fill out this field."          |
+      | "dayDateOfBirth"   | "ANALYST" | "DOCS"   | "Camila" | "salaberry.camila@gmail.com" | ""                | "May"               | "1990"             | "Select an item from the list." |
+      | "monthDateOfBirth" | "ANALYST" | "DOCS"   | "Camila" | "salaberry.camila@gmail.com" | "19"              | ""                  | "1990"             | "Select an item from the list." |
+      | "yearDateOfBirth"  | "ANALYST" | "DOCS"   | "Camila" | "salaberry.camila@gmail.com" | "19"              | "May"               | ""                 | "Select an item from the list." |

@@ -66,7 +66,10 @@ public class LoginSteps {
 	public void the_message_must_be_visible(String message) {
 		assertEquals(message, loginPage.statusLogin.getText());
 	}
-
+	@Then("a validation into the field must be present")
+	public void a_validation_into_the_field_must_be_presente(){
+		assetTrue(StringUtils.isNotEmpty(loginPage.userName.getAttribute("validationMessage"));
+	}
 	@Given("the user is logged in as {string}, {string}")
 	public void the_user_is_logged_in_as(String userName, String passWord) {
 		loadHerosProfilesHome();

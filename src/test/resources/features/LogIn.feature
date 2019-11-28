@@ -21,8 +21,8 @@ Feature: LogIn
     Given the username <username>
     And the password <password>
     When the user attempts to login
-    Then the message "To get the full hero experience, you’ll need to log in." must be visible
-
+    #Then the message "To get the full hero experience, you’ll need to log in." must be visible
+    Then a validation into the field must be present
     Examples: 
       | username | password |
       | ""       | "wizard" |

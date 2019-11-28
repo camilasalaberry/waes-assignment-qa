@@ -1,8 +1,8 @@
 # waes-assignment-qa
 
-Description: This is a selenium java project using framework cucumber to write UI tests.
+Description: This is a selenium java project using framework cucumber to write UI tests. This project is part of hiring process for WAES company.
 
-### Prerequisites
+### Dependencies
 Suposing that you have windows os in your machine:
 1. To run this project is necessary to have vscode ide installed with plugins:
     * Java Extension Pack
@@ -25,3 +25,21 @@ Suposing that you have windows os in your machine:
         The cucumber report will be located project's target folder /cucumber-report-html/cucumber-html-reports/overview-features.html
        **Obs.: If a test fail a embed screenshot will be taken and attached to cucumber report**
 
+### Code
+I used clean code as my base, trying to create methods that are self explaining into test scenarios. I used Hooks to reuse @before and @after methods to cucumber's scenarios, and also a class to configure in which mode webdriver will run when maven command is called.
+
+About the packages of this project:
+| Package     | Info            |
+|             |               |
+| page objects| Pages of heros profiles app converted into classes with their fields mapped as selenium objects |
+| runner      | there is a runner class that runs cucumber features |
+| steps       | there are classes of steps of feature scenarios |
+| support     | In this package there is a class with webdriver configuration if headless , maximized |
+| resources | there are two folders: features - features with their test scenarios and drivers that contains firefox webdriver. The folder driver was created to make the execution of this project easier to whom will receive this app|
+
+### Future Improvements
+* Use parallel testing to reduce test execution time using zallenium testing tool
+* Distributed testing using Selenium Grid to cross-browser testing
+* Visual testing using galen or applitools
+
+ 
