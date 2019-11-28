@@ -1,6 +1,6 @@
 # waes-assignment-qa
 
-Description: This is a selenium java project using framework cucumber to write UI tests. This project is part of the hiring process for WAES company.
+Description: This is a selenium java test project using framework cucumber to write UI tests. This project is part of the hiring process for WAES company.
 
 ### Dependencies
 Suposing that you have windows OS in your machine:

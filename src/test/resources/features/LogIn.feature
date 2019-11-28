@@ -21,13 +21,13 @@ Feature: LogIn
     Given the username <username>
     And the password <password>
     When the user attempts to login
-    #Then the message "To get the full hero experience, you’ll need to log in." must be visible
-    Then a validation into the field must be present
+    Then the message "To get the full hero experience, you’ll need to log in." must be visible
+    And a validation into the field <field> must be present
     Examples: 
-      | username | password |
-      | ""       | "wizard" |
-      | "admin"  | ""       |
-      | ""       | ""       |
+      |field                | username | password |
+      |"userName"           | ""       | "wizard" |
+      |"passWord"           | "admin"  | ""       |
+      |"userName,passWord"  | ""       | ""       |
 
   Scenario Outline: Once logged in Profile page must provide user information
     Given the user is logged in as <username>, <password>
