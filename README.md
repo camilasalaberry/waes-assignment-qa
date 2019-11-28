@@ -26,7 +26,7 @@ Suposing that you have windows OS in your machine:
        **Obs.: If a test fail an embed screenshot will be taken and attached to cucumber report**
 
 ### Code
-I used clean code as my base, trying to create methods that are self explaining into test scenarios. I used Hooks to reuse @before and @after methods to cucumber's scenarios, and also a class to configure in which mode webdriver will run when maven command is called.
+I used clean code as my base, trying to create methods that are self explaining into test scenarios. I used Hooks to reuse @before and @after methods to cucumber's scenarios, and also a class to configure in which mode webdriver will run when maven command is called.Independent test concept was applied.
 
 About the packages of this project:
 
