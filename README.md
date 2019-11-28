@@ -30,7 +30,7 @@ I used clean code as my base, trying to create methods that are self explaining 
 
 About the packages of this project:
 | Package     | Info            |
-|             |               |
+|---|---|
 | page objects| Pages of heros profiles app converted into classes with their fields mapped as selenium objects |
 | runner      | there is a runner class that runs cucumber features |
 | steps       | there are classes of steps of feature scenarios |
