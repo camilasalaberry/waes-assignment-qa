@@ -6,3 +6,4 @@
 .project
 .factorypath
 /target/
+.vscode/settings.json

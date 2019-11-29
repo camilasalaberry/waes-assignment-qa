@@ -17,12 +17,12 @@ public class HomeHerosProfilesPage extends DefaultPage {
 	@FindBy(how = How.ID, using = "signup_link")
 	private WebElement signupLink;
 
-	public void GoToLoginPage() {
+	public void goToLoginPage() {
 		loginLink.click();
 
 	}
 
-	public void GoToSignUpPage() {
+	public void goToSignUpPage() {
 		signupLink.click();
 
 	}

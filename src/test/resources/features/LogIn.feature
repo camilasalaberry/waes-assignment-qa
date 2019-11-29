@@ -1,6 +1,9 @@
 Feature: LogIn
   As an user I want to log in heros's profiles page
 
+    Background: User should be at log in page
+    Given the user is at log in page
+
   Scenario Outline: Login with valid user authentication
     Given the username <username> was registered with password <password>
     When the user attempts to login

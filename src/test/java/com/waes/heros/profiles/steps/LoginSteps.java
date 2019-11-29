@@ -22,38 +22,33 @@ public class LoginSteps {
 
 	@Given("the username {string} was registered with password {string}")
 	public void the_username_was_registered_with_password(String userName, String passWord)
-			throws InterruptedException {
-		this.loadHerosProfilesHome();
-		this.goToLoginPage();
+			throws Exception {
 		loginPage.fillUsernameAndPassword(userName, passWord);
 	}
 
 	@When("the user attempts to login")
-	public void the_user_attempts_to_login() {
+	public void the_user_attempts_to_login() throws Exception  {
 		loginPage.doLogin();
 	}
 
 	@Then("he should see a welcome message {string}")
-	public void he_should_see_a_welcome_message(String message) {
+	public void he_should_see_a_welcome_message(String message) throws Exception {
 		assertEquals(message, loginPage.statusLogin.getText());
 	}
 
 	@Given("the username {string} was not registered with password {string}")
-	public void the_username_was_not_registered_with_password(String userName, String passWord) {
-		this.loadHerosProfilesHome();
-		this.goToLoginPage();
+	public void the_username_was_not_registered_with_password(String userName, String passWord) throws Exception {
 		loginPage.fillUsernameAndPassword(userName, passWord);
 	}
 
 	@Then("he should see a not allowed message {string}")
-	public void he_should_see_a_not_allowed_message(String message) {
+	public void he_should_see_a_not_allowed_message(String message) throws Exception {
 		assertEquals(message, loginPage.statusLogin.getText());
 	}
 
 	@Given("the username {string}")
 	public void the_username(String userName) {
-		this.loadHerosProfilesHome();
-		this.goToLoginPage();
+	
 		loginPage.fillUsername(userName);
 	}
 
@@ -78,32 +73,31 @@ public class LoginSteps {
 		}
 	}
 	@Given("the user is logged in as {string}, {string}")
-	public void the_user_is_logged_in_as(String userName, String passWord) {
-		loadHerosProfilesHome();
-		goToLoginPage();
-		loginAndSubmit(userName, passWord);
+	public void the_user_is_logged_in_as(String userName, String passWord) throws Exception {
+		loginPage.fillUsernameAndPassword(userName, passWord);
+		loginPage.doLogin();
 	}
 
 	@When("the user click to profile page")
-	public void the_user_click_to_profile_page() {
+	public void the_user_click_to_profile_page() throws Exception {
 		profilePage = new ProfilePage(driver);
 	}
 
 	@Then("profile information must be present {string} and , {string}")
-	public void profile_information_must_be_present_and(String question, String superPower) {
+	public void profile_information_must_be_present_and(String question, String superPower) throws Exception {
 		assertTrue(profilePage.question.getText().contains(question));
 		assertTrue(profilePage.superPower.getText().contains(superPower));
 	}
 
 	@When("the user click to details page")
-	public void the_user_click_to_details_page() {
+	public void the_user_click_to_details_page() throws Exception {
 		profilePage = new ProfilePage(driver);
-		profilePage.detailsLink.click();
+		profilePage.goToDetailsPage();
 		detailsPage = new DetailsPage(driver);
 	}
 
 	@Then("details of personal profile must be present {string}, {string}")
-	public void details_of_personal_profile_must_be_present(String name, String email) {
+	public void details_of_personal_profile_must_be_present(String name, String email) throws Exception {
 		assertTrue(detailsPage.name.getText().contains(name));
 		assertTrue(detailsPage.emailAddress.getText().contains(email));
 	}
@@ -112,13 +106,10 @@ public class LoginSteps {
 		herosProfilesPage = new HomeHerosProfilesPage(driver);
 	}
 
-	public void goToLoginPage() {
-		herosProfilesPage.GoToLoginPage();
-		loginPage = new LogInPage(driver);
-	}
-
-	public void loginAndSubmit(String userName, String passWord) {
-		loginPage.fillUsernameAndPassword(userName, passWord);
-		loginPage.doLogin();
+	@Given("the user is at log in page")
+	public void the_user_is_at_log_in_page() throws Exception {
+		herosProfilesPage = new HomeHerosProfilesPage(driver);
+		herosProfilesPage.goToLoginPage();
+		loginPage = new LogInPage(this.driver);
 	}
 }

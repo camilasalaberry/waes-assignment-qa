@@ -6,10 +6,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
+
 public class ConfigureDriver {
+	PropertiesFileReader propertiesFileReader;
 
 	public ConfigureDriver() {
-
+		propertiesFileReader = new PropertiesFileReader();
 	}
 
 	public WebDriver getDriver() {
@@ -27,14 +29,15 @@ public class ConfigureDriver {
 
 	public WebDriver setUpDriver(boolean headless) {
 
-		System.setProperty("webdriver.gecko.driver", "src\\test\\resources\\drivers\\firefox\\geckodriver.exe");
+		System.setProperty("webdriver.gecko.driver", propertiesFileReader.getDriverPath());
 		FirefoxOptions options = new FirefoxOptions();
-		options.addArguments("--lang=us");
+		
 		if (headless) {
-			options.setHeadless(true);
+			options.addArguments("--headless");
 		} else {
-			options.addArguments("start-maximized");
+			options.addArguments(propertiesFileReader.getWindowSize());
 		}
+
 		return new FirefoxDriver(options);
 	}
 

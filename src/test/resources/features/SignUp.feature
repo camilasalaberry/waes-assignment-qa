@@ -32,13 +32,13 @@ Feature: SignUp
     Given user fill the form to become a hero
     And the entered email is <email>
     When user attempts to register
-    Then a validation should be presented "Digite um endereço de e-mail."
+    Then a validation should be presented <message>
 
     Examples: 
-      | email              |
-      | "camila.gmail.com" |
-      | "salaberry@"       |
-      | "12345"            |
+      | email              | message                                                                             |
+      | "camila.gmail.com" | "Please include an '@' in the email address. 'camila.gmail.com' is missing an '@'." |
+      | "salaberry@"       | "Please enter a part following '@'. 'salaberry@' is incomplete."                    |
+      | "12345"            | "Please include an '@' in the email address. '12345' is missing an '@'."            |
 
   Scenario: Should not be possible register a user that is already registered
     Given user fill the form to become a hero with username "dev"
@@ -63,11 +63,11 @@ Feature: SignUp
     Then a validation should be presented to mandatory fields <field>, <message>
 
     Examples: 
-      | field              | username  | password | name     | email                        | day_date_of_birth | month_date_of_birth | year_date_of_birth | message                         |
-      | "userName"         | ""        | "DOCS"   | "Camila" | "salaberry.camila@gmail.com" | "19"              | "May"               | "1990"             | "Fill out this field."          |
-      | "passWord"         | "ANALYST" | ""       | "Camila" | "salaberry.camila@gmail.com" | "19"              | "May"               | "1990"             | "Fill out this field."          |
-      | "name"             | "ANALYST" | "DOCS"   | ""       | "salaberry.camila@gmail.com" | "19"              | "May"               | "1990"             | "Fill out this field."          |
-      | "email"            | "ANALYST" | "DOCS"   | "Camila" | ""                           | "19"              | "May"               | "1990"             | "Fill out this field."          |
-      | "dayDateOfBirth"   | "ANALYST" | "DOCS"   | "Camila" | "salaberry.camila@gmail.com" | ""                | "May"               | "1990"             | "Select an item from the list." |
-      | "monthDateOfBirth" | "ANALYST" | "DOCS"   | "Camila" | "salaberry.camila@gmail.com" | "19"              | ""                  | "1990"             | "Select an item from the list." |
-      | "yearDateOfBirth"  | "ANALYST" | "DOCS"   | "Camila" | "salaberry.camila@gmail.com" | "19"              | "May"               | ""                 | "Select an item from the list." |
+      | field              | username  | password | name     | email                        | day_date_of_birth | month_date_of_birth | year_date_of_birth | message                                |
+      | "userName"         | ""        | "DOCS"   | "Camila" | "salaberry.camila@gmail.com" | "19"              | "May"               | "1990"             | "Please fill out this field."          |
+      | "passWord"         | "ANALYST" | ""       | "Camila" | "salaberry.camila@gmail.com" | "19"              | "May"               | "1990"             | "Please fill out this field."          |
+      | "name"             | "ANALYST" | "DOCS"   | ""       | "salaberry.camila@gmail.com" | "19"              | "May"               | "1990"             | "Please fill out this field."          |
+      | "email"            | "ANALYST" | "DOCS"   | "Camila" | ""                           | "19"              | "May"               | "1990"             | "Please fill out this field."          |
+      | "dayDateOfBirth"   | "ANALYST" | "DOCS"   | "Camila" | "salaberry.camila@gmail.com" | ""                | "May"               | "1990"             | "Please select an item in the list."   |
+      | "monthDateOfBirth" | "ANALYST" | "DOCS"   | "Camila" | "salaberry.camila@gmail.com" | "19"              | ""                  | "1990"             | "Please select an item in the list."   |
+      | "yearDateOfBirth"  | "ANALYST" | "DOCS"   | "Camila" | "salaberry.camila@gmail.com" | "19"              | "May"               | ""                 | "Please select an item in list."       |

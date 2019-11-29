@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import java.util.concurrent.TimeUnit;
 import com.waes.heros.profiles.support.ConfigureDriver;
+import com.waes.heros.profiles.support.PropertiesFileReader;
 
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
@@ -14,16 +15,18 @@ import cucumber.api.java.Before;
 public class Hooks {
 
 	static WebDriver driver;
-	ConfigureDriver config;
-	public static final String HEROS_PROFILE_URL = "https://waesworks.bitbucket.io/";
+	ConfigureDriver configureDriver;
+	PropertiesFileReader propertiesFileReader;
+	
 
 	@Before
 	public void BeforeScenario() {
 
-		config = new ConfigureDriver();
-		driver = config.getDriver();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		driver.get(HEROS_PROFILE_URL);
+		propertiesFileReader = new PropertiesFileReader();
+		configureDriver = new ConfigureDriver();
+		driver = configureDriver.getDriver();
+		driver.manage().timeouts().implicitlyWait(propertiesFileReader.getImplicitWait(), TimeUnit.SECONDS);
+		driver.get(propertiesFileReader.getApplicationUrl());
 
 	}
 
